@@ -8,7 +8,9 @@ function work() {
     let result_weigth = 0;
     let temporary = undefined
     let number = 0
-    let tmp;
+    let input_results_input_1 =0;
+    let input_results_input_2 =0;
+    let input_results_input_3 =0;
     for (let i = 0; i < table.length; i++) {
         let tmp = document.querySelector(".yui-dt-data").getElementsByTagName("tr")[i].getElementsByTagName('td')[1].getElementsByTagName('div')[0].getElementsByTagName('span')
         let tmp2 = document.querySelector(".yui-dt-data").getElementsByTagName("tr")[i].getElementsByTagName('td')[3].getElementsByTagName('div')[0].getElementsByTagName('span')
@@ -63,6 +65,10 @@ function work() {
             input_1 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[0].value
             input_2 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[1].value
             input_3 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[2].value
+
+            input_results_input_1 +=parseInt(input_1)
+            input_results_input_2 +=parseInt(input_2)
+            input_results_input_3 +=parseInt(input_3)
             if (input_1 > result_weigth || input_2 > result_weigth || input_3 > result_weigth  ) {
                 if(input_1 > eryka_waga || input_2 > eryka_waga || input_3 > eryka_waga){
                     table2[i].getElementsByTagName('tr')[2].style.backgroundColor = 'red'
@@ -76,6 +82,12 @@ function work() {
             }
         }
     }
+    if(input_results_input_1>result_weigth || input_results_input_2>result_weigth||input_results_input_3>result_weigth){
+        for (let i = 0; i < table2.length; i++) {
+            if (table2[i].getElementsByTagName('tr')[2]?.getElementsByTagName('td')[1]?.getElementsByTagName("div")[0]?.getElementsByTagName('form') != undefined) {
+                table2[i].getElementsByTagName('tr')[2].style.backgroundColor = 'red'
+            }
+        }
+    }
 }
 document.addEventListener('keyup', work)
-
