@@ -5,7 +5,9 @@
   "permissions": [
     "https://zooart6.yourtechnicaldomain.com/panel/orderd*",
     "https://zooart.com.pl/panel/orderd*",
-    "",
+    "https://zookaralyste.lt/panel/orderd*",
+    "https://zooland.com.de/panel/orderd*",
+    "https://krteckem.cz/panel/orderd*",
     "tabs"
   ],
   "manifest_version": 2,
@@ -16,8 +18,11 @@
   "content_scripts": [
     {
       "matches": [
-        "https://zooart6.yourtechnicaldomain.com/panel/orderd*",
-        "https://zooart.com.pl/panel/orderd*"
+         "https://zooart6.yourtechnicaldomain.com/panel/orderd*",
+    "https://zooart.com.pl/panel/orderd*",
+    "https://zookaralyste.lt/panel/orderd*",
+    "https://zooland.com.de/panel/orderd*",
+    "https://krteckem.cz/panel/orderd*",
       ],
       "js": [
         "js.js"
