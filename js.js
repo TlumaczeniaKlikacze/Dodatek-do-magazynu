@@ -28,6 +28,9 @@ function work() {
             if (tmp2[__].innerHTML.includes('szt.')) {
                 number = tmp2[__].innerHTML.split('szt.')[0]
                 result_weigth += number * temporary
+            }else if(tmp2[__].innerHTML.includes('ks')){
+                number = tmp2[__].innerHTML.split('ks')[0]
+                result_weigth += number * temporary
             }
         }
     }
