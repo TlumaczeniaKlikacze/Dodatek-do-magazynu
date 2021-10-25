@@ -1,14 +1,7 @@
-document.querySelectorAll(".addPackage")[0]
-if (document.querySelectorAll(".addPackage")[0].onclick) {
-    console.log('xd')
-}
+
 let input_1
 let input_2
 let input_3
-document.querySelectorAll(".addPackage")[0].addEventListener('click', () => {
-    console.log('xd')
-
-})
 function work() {
     let eryka_waga = 31500
     let table = document.querySelector(".yui-dt-data").getElementsByTagName("tr")//tabelka i elementy
