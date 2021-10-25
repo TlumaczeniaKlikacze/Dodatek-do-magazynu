@@ -3,7 +3,7 @@ let input_1
 let input_2
 let input_3
 function work() {
-    let eryka_waga = 31500
+    let eryka_waga = 30000
     let table = document.querySelector(".yui-dt-data").getElementsByTagName("tr")//tabelka i elementy
     let result_weigth = 0;
     let temporary = undefined
