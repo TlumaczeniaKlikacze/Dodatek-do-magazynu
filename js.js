@@ -9,9 +9,6 @@ function work() {
     let temporary = undefined
     let number = 0
     for (let i = 0; i < table.length; i++) {
-        // console.log(document.querySelector(".yui-dt-data").getElementsByTagName("tr")[i])
-        // console.log(document.querySelector(".yui-dt-data").getElementsByTagName("tr")[i].getElementsByTagName('td'))
-
         let tmp = document.querySelector(".yui-dt-data").getElementsByTagName("tr")[i].getElementsByTagName('td')[1].getElementsByTagName('div')[0].getElementsByTagName('span')
         let tmp2 = document.querySelector(".yui-dt-data").getElementsByTagName("tr")[i].getElementsByTagName('td')[3].getElementsByTagName('div')[0].getElementsByTagName('span')
         for (let _ = 0; _ < tmp.length; _++) {
@@ -45,13 +42,9 @@ function work() {
             input_2 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[1].value
             input_3 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[2].value
 
-            if (input_1 > result_weigth || input_2 > result_weigth || input_3 > result_weigth || input_1 >= eryka_waga || input_2 >= eryka_waga || input_3 >= eryka_waga) {
-                console.log(result_weigth)
-                console.log(input_1)
+            if (input_1 > result_weigth || input_2 > result_weigth || input_3 > result_weigth || input_1 > eryka_waga || input_2 > eryka_waga || input_3 > eryka_waga) {
                 table2[i].getElementsByTagName('tr')[2].style.backgroundColor = 'red'
             } else {
-                console.log(result_weigth)
-                console.log(input_1)
                 table2[i].getElementsByTagName('tr')[2].style.backgroundColor = 'green'
             }
         }
