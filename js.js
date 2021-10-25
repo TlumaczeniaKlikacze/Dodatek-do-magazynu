@@ -106,8 +106,8 @@ function work() {
         tmp_number = 0
         used = []
         let tmp = highestToLowest_inputs[b].value
-        if(tmp > eryka_waga){
-            
+        if(highestToLowest_inputs[b].value > eryka_waga){
+            highestToLowest_inputs[b].element.style.backgroundColor = 'red'
         }
         for(let x = 0;x<highestToLowest_array_of_weight.length;x++){
             if(Math.sign((tmp- highestToLowest_array_of_weight[x])) != -1){
