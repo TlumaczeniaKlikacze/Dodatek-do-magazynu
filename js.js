@@ -41,17 +41,14 @@ function work() {
                     if(tmp2[__].getElementsByTagName('a')[0].innerHTML.includes('szt.')){
                         tmp = tmp2[__].getElementsByTagName('a')[0].innerHTML
                         number = tmp[__].split('szt.')[0]
-                        console.log(number)
                         result_weigth += number * temporary
                     }else if(tmp2[__].getElementsByTagName('a')[0].innerHTML.includes('ks')){
                         tmp = tmp2[__].getElementsByTagName('a')[0].innerHTML
                         number = tmp[__].split('ks')[0]
-                        console.log(number)
                         result_weigth += number * temporary
                     }else if(tmp2[__].getElementsByTagName('a')[0].innerHTML.includes('Stk.')){
                         tmp = tmp2[__].getElementsByTagName('a')[0].innerHTML
                         number = tmp[__].split('Stk.')[0]
-                        console.log(number)
                         result_weigth += number * temporary
                     }
               
@@ -66,7 +63,6 @@ function work() {
             input_1 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[0].value
             input_2 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[1].value
             input_3 = table2[i].getElementsByTagName('tr')[2].getElementsByTagName('td')[1].getElementsByTagName("div")[0].getElementsByTagName('form')[0].getElementsByTagName('input')[2].value
-            console.log(result_weigth)
             if (input_1 > result_weigth || input_2 > result_weigth || input_3 > result_weigth  ) {
                 if(input_1 > eryka_waga || input_2 > eryka_waga || input_3 > eryka_waga){
                     table2[i].getElementsByTagName('tr')[2].style.backgroundColor = 'red'
