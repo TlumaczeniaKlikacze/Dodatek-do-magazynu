@@ -31,6 +31,9 @@ function work() {
             }else if(tmp2[__].innerHTML.includes('ks')){
                 number = tmp2[__].innerHTML.split('ks')[0]
                 result_weigth += number * temporary
+            }else if(tmp2[__].innerHTML.includes('Stk.')){
+                number = tmp2[__].innerHTML.split('Stk.')[0]
+                result_weigth += number * temporary
             }
         }
     }
