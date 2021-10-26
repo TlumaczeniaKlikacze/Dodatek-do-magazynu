@@ -4,7 +4,7 @@ let input_2
 let input_3
 
 function work() {
-    let used
+    let used =[]
     let array_weigth = []
     let used_inputs_array = []
     let eryka_waga = 30000
@@ -97,52 +97,94 @@ function work() {
         }
     }
 
-    let all = 0;
     let tmp_number = 0;
-    let tmp_hold_array = used_inputs_array
     let highestToLowest_array_of_weight = array_weigth.sort((a, b) => b-a);
+    let tmp_ar=[]
     let highestToLowest_inputs = used_inputs_array.sort((a, b) => parseInt(b.value)-parseInt(a.value));
     for(let b = 0;b<highestToLowest_inputs.length;b++){
+     
+        tmp_ar =[]
         tmp_number = 0
-        used = []
         let tmp = highestToLowest_inputs[b].value
-        if(highestToLowest_inputs[b].value > eryka_waga){
-            highestToLowest_inputs[b].element.style.backgroundColor = 'red'
-        }
-        for(let x = 0;x<highestToLowest_array_of_weight.length;x++){
+        for(let x =0;x<highestToLowest_array_of_weight.length;x++){
             if(Math.sign((tmp- highestToLowest_array_of_weight[x])) != -1){
+                tmp_ar.push(highestToLowest_array_of_weight[x])
+                tmp_number +=highestToLowest_array_of_weight[x]
                 tmp = tmp  - highestToLowest_array_of_weight[x]
-                used.push(highestToLowest_array_of_weight[x])
+                }
+        }
+        used.push({ar:tmp_ar,sum:tmp_number,el:highestToLowest_inputs[b].element})
+        tmp_ar = []
+        tmp_number = 0;
+        tmp = highestToLowest_inputs[b].value
+        for(let n =highestToLowest_array_of_weight.length-1;n>0;n--){
+            if(Math.sign((tmp- highestToLowest_array_of_weight[n])) != -1){
+                tmp_ar.push(highestToLowest_array_of_weight[n])
+                tmp_number +=highestToLowest_array_of_weight[n]
+                tmp = tmp  - highestToLowest_array_of_weight[n]
+                }
+        }
+        used.push({ar:tmp_ar,sum:tmp_number,el:highestToLowest_inputs[b].element})
+    }
+   
+    highestToLowest_inputs.forEach(e=>{
+        e.element.style.backgroundColor = "red"
+    })
+    let good_values = used.filter(e=>{
+        let tmp = highestToLowest_inputs.find(el => e.sum == el.value)
+        if(tmp != undefined){
+            return e
+        }
+    })
+    good_values = good_values.filter(e=>{
+        if(e.ar.length != 0)
+        return e
+    })
+    let ready_val = []//inaczej trzeba to posortować
+    for(let q=0;q<highestToLowest_inputs.length;q++){
+        let tmp_ = good_values.find(e=>e.sum == highestToLowest_inputs[q].value)
+        if(tmp_ != undefined)
+        ready_val.push(tmp_)
+    }
+
+    //potem na ready value operuje
+    for(let a=0;a<highestToLowest_inputs.length;a++){
+        for(let g=0;g<ready_val.length;g++){
+            if(ready_val[g].sum == highestToLowest_inputs[a].value){
+                ready_val[g].el = highestToLowest_inputs[a].element
+                break
             }
-
         }
-        used.forEach(e=>{
-            tmp_number +=e
+    }
+    let sum =0
+    let control_ar = []
+    for(let p=0;p<ready_val.length;p++){
+        control_ar= control_ar.concat(ready_val[p].ar)
+        ready_val[p].el.style.backgroundColor = "green"
+        sum+=ready_val[p].sum
+        if(ready_val[p].sum >eryka_waga){
+            ready_val[p].el.style.backgroundColor = "red"
+        }
+    }
+    console.log(sum)
+    console.log(result_weigth)
+    console.log(ready_val)
+    highestToLowest_inputs = highestToLowest_inputs.filter(e=>{
+        return e!= 0
+    })
+    if(sum !=result_weigth){
+        highestToLowest_inputs.forEach(e=>{
+            e.element.style.backgroundColor = "red"
         })
-        if(tmp_number != highestToLowest_inputs[b].value){
-            highestToLowest_inputs[b].element.style.backgroundColor = 'red'
-        }else{
-            highestToLowest_inputs[b].element.style.backgroundColor = 'green'
-        }
-
-
-        for(let n =0; n<used.length;n++){
-            if(highestToLowest_array_of_weight.indexOf(used[n])>-1)
-            highestToLowest_array_of_weight.splice(highestToLowest_array_of_weight.indexOf(used[n]),1)
-        }
-        all+=highestToLowest_inputs[b].value
-        if(highestToLowest_inputs[b].value > eryka_waga){
-            highestToLowest_inputs[b].element.style.backgroundColor = 'red'
-        }
+    }else if(ready_val.length == highestToLowest_inputs.length){
+        highestToLowest_inputs.forEach(e=>{
+            e.element.style.backgroundColor = "green"
+        })
+    }else{
+        highestToLowest_inputs.forEach(e=>{
+            e.element.style.backgroundColor = "red"
+        })
     }
-    if(all !=result_weigth){
-        tmp_hold_array.forEach(e => {
-            e.element.style.backgroundColor = 'red'
-        });
-    }
-
-
 }
 document.addEventListener('keyup', work)
-
 
